@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+require "csv"
 require_relative "csv_rw/version"
 
+# simple csv wrapper
 module CsvRw
   def self.read(csv_filepath)
     result = []
@@ -15,11 +17,10 @@ module CsvRw
   def self.write(output, csv_filepath)
     headers = output.first.keys
 
-    CSV.open(csv_filepath, 'w') do |csv|
+    CSV.open(csv_filepath, "w") do |csv|
       csv << headers
 
       output.each { |hash| csv << hash.values }
     end
   end
 end
-

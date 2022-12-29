@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+if ENV.fetch("COVERAGE", "f").start_with? "t"
+  require "simplecov"
+  SimpleCov.start
+end
+
 require "csv_rw"
 
 RSpec.configure do |config|
