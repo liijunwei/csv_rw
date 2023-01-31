@@ -9,6 +9,9 @@ module CsvRw
     result = []
     CSV.foreach(csv_filepath, headers: true, converters: :all) do |row|
       result << row.to_h.transform_keys(&:to_sym)
+    rescue => e
+      $stderr.puts({error_class: e.class, error_message: e.message, row: row.to_h}.to_json)
+      raise e
     end
 
     result.reject { |e| e.compact.empty? }
