@@ -21,7 +21,7 @@ RSpec.describe CsvRw do
     end
   end
 
-  describe ".read" do
+  describe ".write" do
     let(:filename) { "spec/fixtures/colors.csv" }
 
     after { FileUtils.rm(filename) }
