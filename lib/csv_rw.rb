@@ -21,6 +21,8 @@ module CsvRw
     headers = output.first.keys
 
     CSV.open(csv_filepath, "w") do |csv|
+      require 'pry'
+      binding.pry
       csv << headers
 
       output.each { |hash| csv << hash.values }
